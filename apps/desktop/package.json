@@ -1,0 +1,30 @@
+{
+  "name": "@journal-kmk/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "electron .",
+    "build": "electron-builder --win nsis"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^38.1.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "ru.kmk.journal",
+    "productName": "Журнал КМК",
+    "files": ["src/**/*", "package.json"],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
