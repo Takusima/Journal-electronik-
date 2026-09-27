@@ -1,13 +1,15 @@
 {
   "name": "@journal-kmk/desktop",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "main": "src/main.js",
   "scripts": {
     "dev": "electron .",
     "build": "electron-builder --win nsis"
   },
-  "dependencies": {},
+  "dependencies": {
+    "electron-updater": "^6.6.2"
+  },
   "devDependencies": {
     "electron": "^38.1.0",
     "electron-builder": "^26.0.12"
@@ -25,6 +27,12 @@
       "allowToChangeInstallationDirectory": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "Takusima",
+      "repo": "Journal-electronik-",
+      "releaseType": "release"
     }
   }
 }
