@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Журнал КМК</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:#f5f7fb;color:#18202a}button{font:inherit}
+.app{display:grid;grid-template-columns:220px 1fr;min-height:100vh}
+.sidebar{background:#fff;border-right:1px solid #e5e9ef;padding:22px 14px}
+.logo{font-weight:800;font-size:20px;padding:8px 10px 22px}.logo small{display:block;color:#7b8490;font-size:12px;font-weight:500;margin-top:4px}
+.nav button{width:100%;border:0;background:transparent;text-align:left;padding:12px;border-radius:10px;margin:3px 0;cursor:pointer;color:#374151}.nav button.active,.nav button:hover{background:#eef2ff}
+.content{padding:28px;max-width:1100px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.title{font-size:28px;font-weight:800}.muted{color:#7b8490;font-size:14px}.status{background:#eaf7ee;color:#287a45;border-radius:20px;padding:8px 12px;font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}.card,.panel{background:#fff;border:1px solid #e5e9ef;border-radius:14px}.card{padding:18px}.num{font-size:28px;font-weight:800;margin-top:8px}.panel{overflow:hidden;margin-bottom:18px}.panel h2{font-size:16px;margin:0;padding:16px 18px;border-bottom:1px solid #edf0f4}.row{display:grid;grid-template-columns:1.5fr 1fr .6fr .8fr;gap:12px;padding:14px 18px;border-bottom:1px solid #edf0f4;align-items:center}.row:last-child{border-bottom:0}.badge{display:inline-block;padding:6px 9px;border-radius:8px;background:#eef2ff;font-size:12px}.primary{border:0;background:#4f46e5;color:#fff;border-radius:9px;padding:9px 13px;cursor:pointer}.page{display:none}.page.active{display:block}
+@media(max-width:800px){.app{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid #e5e9ef}.nav{display:flex;gap:5px;overflow:auto}.nav button{white-space:nowrap}.cards{grid-template-columns:repeat(2,1fr)}.content{padding:18px}.row{grid-template-columns:1fr auto}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="logo">Журнал КМК<small>для преподавателей</small></div>
+  <nav class="nav">
+    <button class="active" data-page="dashboard">Обзор</button>
+    <button data-page="groups">Группы</button>
+    <button data-page="grades">Оценки</button>
+    <button data-page="homework">Домашние задания</button>
+    <button data-page="notifications">Уведомления</button>
+  </nav>
+</aside>
+<main class="content">
+  <div class="top"><div><div class="title">Добрый день, Анна Сергеевна</div><div class="muted">Электронный журнал · КМК</div></div><div class="status">● Синхронизировано</div></div>
+  <section id="dashboard" class="page active">
+    <div class="cards">
+      <div class="card"><div class="muted">Мои группы</div><div class="num">4</div></div>
+      <div class="card"><div class="muted">Оценок сегодня</div><div class="num">18</div></div>
+      <div class="card"><div class="muted">Домашних заданий</div><div class="num">3</div></div>
+      <div class="card"><div class="muted">Уведомлений</div><div class="num">2</div></div>
+    </div>
+    <div class="panel"><h2>Последние действия</h2>
+      <div class="row"><b>Иванов Максим</b><span>Информатика</span><b>5</b><span class="badge">Сегодня</span></div>
+      <div class="row"><b>Петрова Алина</b><span>Информатика</span><b>4</b><span class="badge">Сегодня</span></div>
+      <div class="row"><b>ИС-21</b><span>Практическая работа №4</span><b>ДЗ</b><span class="badge">до 30.09</span></div>
+    </div>
+  </section>
+  <section id="groups" class="page"><div class="title">Группы</div><p class="muted">Только группы, назначенные преподавателю.</p><div class="panel"><div class="row"><b>ИС-21</b><span>24 студента</span><span>Информатика</span><button class="primary">Открыть</button></div><div class="row"><b>ИС-22</b><span>21 студент</span><span>Информатика</span><button class="primary">Открыть</button></div><div class="row"><b>ПО-31</b><span>19 студентов</span><span>Базы данных</span><button class="primary">Открыть</button></div></div></section>
+  <section id="grades" class="page"><div class="title">Оценки</div><p class="muted">Выставление оценки, комментарий и история изменений.</p><div class="panel"><h2>ИС-21 · Информатика <button class="primary" id="gradeBtn">+ Оценка</button></h2><div class="row"><b>Иванов Максим</b><span>Средний 4.6</span><b>5</b><span class="badge">Сегодня</span></div><div class="row"><b>Петрова Алина</b><span>Средний 4.2</span><b>4</b><span class="badge">Сегодня</span></div><div class="row"><b>Сидоров Илья</b><span>Средний 3.8</span><b>4</b><span class="badge">Вчера</span></div></div><p id="message" class="muted"></p></section>
+  <section id="homework" class="page"><div class="title">Домашние задания</div><p class="muted">Задания автоматически доступны студентам до даты сдачи.</p><div class="panel"><h2>Активные задания <button class="primary" id="hwBtn">+ Создать</button></h2><div class="row"><b>Практическая работа №4</b><span>ИС-21</span><span>Информатика</span><span class="badge">до 30.09</span></div><div class="row"><b>SQL: SELECT и JOIN</b><span>ИС-22</span><span>Информатика</span><span class="badge">до 02.10</span></div></div></section>
+  <section id="notifications" class="page"><div class="title">Уведомления</div><p class="muted">Важные события системы.</p><div class="panel"><div class="row"><b>Новая оценка</b><span>Иванов Максим получил 5</span><span>10:42</span><span class="badge">Новое</span></div><div class="row"><b>Домашнее задание</b><span>ИС-21 · Практическая работа №4</span><span>09:15</span><span class="badge">Новое</span></div></div></section>
+</main>
+</div>
+<script>
+const buttons=document.querySelectorAll(".nav button"),pages=document.querySelectorAll(".page");
+buttons.forEach(btn=>btn.addEventListener("click",()=>{buttons.forEach(b=>b.classList.remove("active"));pages.forEach(p=>p.classList.remove("active"));btn.classList.add("active");document.getElementById(btn.dataset.page).classList.add("active")}));
+document.getElementById("gradeBtn").addEventListener("click",()=>document.getElementById("message").textContent="Здесь будет компактная форма: студент → оценка → комментарий → Сохранить.");
+document.getElementById("hwBtn").addEventListener("click",()=>document.getElementById("hwBtn").textContent="Форма создания");
+</script>
+</body>
+</html>
