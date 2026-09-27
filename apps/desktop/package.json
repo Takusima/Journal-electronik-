@@ -18,9 +18,7 @@
     "appId": "ru.kmk.journal",
     "productName": "Журнал КМК",
     "files": ["src/**/*", "package.json"],
-    "win": {
-      "target": "nsis"
-    },
+    "win": {"target": "nsis"},
     "nsis": {
       "oneClick": true,
       "perMachine": false,
