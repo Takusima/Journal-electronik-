@@ -21,3 +21,10 @@ jobs:
       - run: npm run build:shared
       - run: npm run build:server
       - run: npm run build:desktop
+      - name: Upload Windows installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: journal-kmk-windows-installer
+          path: apps/desktop/dist/*.exe
+          if-no-files-found: error
+          retention-days: 14
